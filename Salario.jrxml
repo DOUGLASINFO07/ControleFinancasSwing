@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19e3cd57-dd09-4429-98d9-6fd02b56fd95">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     salario.`empresaSalario` AS salario_empresaSalario,
+     salario.`valorSalario` AS salario_valorSalario,
+     salario.`dataRecebimentoSalario` AS salario_dataRecebimentoSalario,
+     salario.`cicloRecebimentoSalario` AS salario_cicloRecebimentoSalario
+FROM
+     `salario` salario]]>
+	</queryString>
+	<field name="salario_empresaSalario" class="java.lang.String"/>
+	<field name="salario_valorSalario" class="java.lang.Double"/>
+	<field name="salario_dataRecebimentoSalario" class="java.sql.Date"/>
+	<field name="salario_cicloRecebimentoSalario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40c84b5d-9bc0-4f46-a2ce-9771596c2dca">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="New Dataset 1" uuid="85245455-c784-4b94-ace6-8255970e1078">
+		<queryString>
+			<![CDATA[SELECT
+     boleto.`codigoBoleto` AS boleto_codigoBoleto,
+     boleto.`empresaBoleto` AS boleto_empresaBoleto,
+     boleto.`servicoBoleto` AS boleto_servicoBoleto,
+     boleto.`valorPagarBoleto` AS boleto_valorPagarBoleto,
+     boleto.`vencimentoBoleto` AS boleto_vencimentoBoleto,
+     boleto.`parcelasBoleto` AS boleto_parcelasBoleto,
+     boleto.`numeroParcelasBoleto` AS boleto_numeroParcelasBoleto,
+     boleto.`cicloBoleto` AS boleto_cicloBoleto,
+     boleto.`formaPagamentoBoleto` AS boleto_formaPagamentoBoleto,
+     boleto.`dataPagamentoBoleto` AS boleto_dataPagamentoBoleto,
+     boleto.`valorPagoBoleto` AS boleto_valorPagoBoleto,
+     boleto.`localPagamentoBoleto` AS boleto_localPagamentoBoleto,
+     boleto.`pagadorBoleto` AS boleto_pagadorBoleto
+FROM
+     `boleto` boleto]]>
+		</queryString>
+		<field name="boleto_codigoBoleto" class="java.lang.Integer"/>
+		<field name="boleto_empresaBoleto" class="java.lang.String"/>
+		<field name="boleto_servicoBoleto" class="java.lang.String"/>
+		<field name="boleto_valorPagarBoleto" class="java.lang.Double"/>
+		<field name="boleto_vencimentoBoleto" class="java.sql.Date"/>
+		<field name="boleto_parcelasBoleto" class="java.lang.Integer"/>
+		<field name="boleto_numeroParcelasBoleto" class="java.lang.String"/>
+		<field name="boleto_cicloBoleto" class="java.lang.String"/>
+		<field name="boleto_formaPagamentoBoleto" class="java.lang.String"/>
+		<field name="boleto_dataPagamentoBoleto" class="java.sql.Date"/>
+		<field name="boleto_valorPagoBoleto" class="java.lang.Double"/>
+		<field name="boleto_localPagamentoBoleto" class="java.lang.String"/>
+		<field name="boleto_pagadorBoleto" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="dataFinalMes" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataInicioMes" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     boleto.`empresaBoleto` AS boleto_empresaBoleto,
+     boleto.`servicoBoleto` AS boleto_servicoBoleto,
+     boleto.`valorPagarBoleto` AS boleto_valorPagarBoleto,
+     boleto.`vencimentoBoleto` AS boleto_vencimentoBoleto,
+     boleto.`numeroParcelasBoleto` AS boleto_numeroParcelasBoleto,
+     boleto.`dataPagamentoBoleto` AS boleto_dataPagamentoBoleto,
+     boleto.`valorPagoBoleto` AS boleto_valorPagoBoleto,
+     boleto.`localPagamentoBoleto` AS boleto_localPagamentoBoleto,
+     boleto.`pagadorBoleto` AS boleto_pagadorBoleto
+FROM
+boleto
+     boleto WHERE boleto.vencimentoBoleto = $P{dataInicioMes}
+ AND boleto.vencimentoBoleto = $P{dataFinalMes}
+GROUP BY codigoBoleto]]>
+	</queryString>
+	<field name="boleto_empresaBoleto" class="java.lang.String"/>
+	<field name="boleto_servicoBoleto" class="java.lang.String"/>
+	<field name="boleto_valorPagarBoleto" class="java.lang.Double"/>
+	<field name="boleto_vencimentoBoleto" class="java.sql.Date"/>
+	<field name="boleto_numeroParcelasBoleto" class="java.lang.String"/>
+	<field name="boleto_dataPagamentoBoleto" class="java.sql.Date"/>
+	<field name="boleto_valorPagoBoleto" class="java.lang.Double"/>
+	<field name="boleto_localPagamentoBoleto" class="java.lang.String"/>
+	<field name="boleto_pagadorBoleto" class="java.lang.String"/>
+	<variable name="dataInicioMes" class="java.lang.String"/>
+	<variable name="dataFinalMes" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement x="456" y="0" width="99" height="132" uuid="5cc90ad1-fcdb-471d-b134-924cb532411f"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="64472ecb-eeef-4ece-8c82-eb20f573a456"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="1d1cd8dc-3e8a-4a45-9a1d-78d45c1a7223"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="13eaa829-ec0c-4635-803c-ce99f2a686a8"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="9a93d4c3-da6a-4aac-890a-8c6efb7e4874"/>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="61" height="18" forecolor="#000000" uuid="df77f6a0-1907-414c-9363-2b4c780867d5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_empresaBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="61" y="7" width="61" height="18" forecolor="#000000" uuid="b704de24-04c6-4363-9acc-a3146e30121e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_servicoBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="122" y="7" width="61" height="18" forecolor="#000000" uuid="5da47b52-2189-4d28-aea2-f3e5b3c69f06"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_valorPagarBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="183" y="7" width="61" height="18" forecolor="#000000" uuid="d956e0df-067f-44d4-ad9b-29f41c259e57"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_vencimentoBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="244" y="7" width="61" height="18" forecolor="#000000" uuid="9c3517b6-f7c8-4a17-909a-3e3e9876c01e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_numeroParcelasBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="7" width="61" height="18" forecolor="#000000" uuid="b9f01917-575d-4924-ae08-41f9569de509"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_dataPagamentoBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="366" y="7" width="61" height="18" forecolor="#000000" uuid="e05ee53c-a455-40aa-a6b8-7cf8354a4b4c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_valorPagoBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="427" y="7" width="61" height="18" forecolor="#000000" uuid="dd233a2e-56d0-4138-8aee-f01dff457dd5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_localPagamentoBoleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="488" y="7" width="61" height="18" forecolor="#000000" uuid="6005255c-0f8e-4e0c-b461-8bbac7f2f5b5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[boleto_pagadorBoleto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="501af297-d40d-4a7f-93d0-b22eef28879a"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="61" height="18" uuid="fff17a39-f51c-4306-905e-d0af7104805a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_empresaBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="61" y="0" width="61" height="18" uuid="079cac5b-38ec-4999-a60a-eeed3787e75c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_servicoBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="122" y="0" width="61" height="18" uuid="0f6e5008-7d53-4e33-90be-1571e3c1cbda"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_valorPagarBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" positionType="Float" x="183" y="0" width="61" height="18" uuid="85405b4b-2648-42c5-a181-2ca9f945ac90"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_vencimentoBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="244" y="0" width="61" height="18" uuid="d73f7f38-36d4-43b5-bf9a-230ada5c40f6"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_numeroParcelasBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" positionType="Float" x="305" y="0" width="61" height="18" uuid="e431ad35-30a8-452d-aee8-77280eaf71ca"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_dataPagamentoBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="366" y="0" width="61" height="18" uuid="e3f41014-9880-4530-aab7-f4ec8c7ebe94"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_valorPagoBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="427" y="0" width="61" height="18" uuid="07be96de-ba10-494c-bc30-37151bc3c3ff"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_localPagamentoBoleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="488" y="0" width="61" height="18" uuid="60138e5b-8e27-4b54-a031-c0c45472d1f1"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boleto_pagadorBoleto}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="d99a7650-c40d-44bd-9bb8-914a52789b93"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="40e3565f-5cd8-4a90-975b-2cd7a9d67890"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="d885f797-1f2a-4d6d-9c96-ea08d2a46e05"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="d7d0e0f0-d967-4adb-870f-1bc103528cf2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="4d93d24a-4fee-4676-a830-2692296c718d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
